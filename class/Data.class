@@ -1,0 +1,50 @@
+<?php
+
+class data{
+    //formata resgate BD
+    function formata_data($data){
+
+    // Aqui pegamos a data, e dividimos ela em duas, usando a métodoExplode()
+    $data = explode(" ", $data);
+
+    // AQUI TEMOS AS DUAS PARTES
+    $data1 = $data[0]; // DATA (xxxx-xx-xx)
+    $data2 = $data[1]; // HORA (xx:xx:xx)
+
+    // Agora dividimos a data em três partes, também usando o método Explode()
+    $data1 = explode("-", $data1);
+
+    $dia = $data1[2]; // Retorna o dia
+    $mes = $data1[1]; // Retorna o mês
+    $ano = $data1[0]; // Retorna o ano
+
+    /* Como deve ter notado, dentro das variáveis existem o número de array, o 0(zero) trás o ano, 1 o mês e o 2 o dia para saber mais recomendo pesquisar sobre a função
+
+    Agora vamos formatar a data, trazemos as strings, e a hora
+    Aonde dia traz a string $data1[2]
+    Aonde mês traz a string $data1[1]
+    Aonde ano traz a string $data1[0]
+
+    Como não precisamos "explodir" a hora trazemos ela normalmente através da string $data2
+
+    */
+    $data = $dia . "/" . $mes . "/" . $ano . " às " . $data2;
+
+    // Retornamos o valor
+    return $data;
+
+    }
+    
+    function formata_dataBD($data){
+        $data = explode('/', $data);
+        
+        $dia = $data[0];
+        $mes = $data[1];
+        $ano = $data[2];
+        
+        $data = $ano . "-" . $mes . "-" . $dia;
+        
+        return $data;
+    }
+}    
+?>
